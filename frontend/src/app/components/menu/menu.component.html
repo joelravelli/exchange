@@ -1,0 +1,23 @@
+<div>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row style="height: 80px">
+            <span>Exchange Dashboard</span>
+            <span class="toolbar-spacer"></span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+<mat-drawer-container class="example-container">
+    <mat-drawer class="mat-sidenav-custom" mode="side" opened>
+        <section class="button-row">
+            <div>
+                <button mat-button class="example-label menu-buttons" routerLink="rate" routerLinkActive="router-link-active" >Exchange Rate</button>
+            </div>
+            <div>
+                <button mat-button class="example-label menu-buttons" routerLink="graph">Exchange Graph</button>
+            </div>
+        </section>
+    </mat-drawer>
+    <mat-drawer-content class="mat-drawer-spacer">
+        <app-content></app-content>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,66 @@
+<form [formGroup]="exchangeRateForm" (ngSubmit)="onClickSubmit(exchangeRateForm.value)">
+  <div class="example-container">
+    <mat-form-field appearance="fill" floatLabel="always">
+      <mat-label for="sourceAmount">Amount</mat-label>
+      <input matInput id="sourceAmount" name="sourceAmount" formControlName="sourceAmount"
+        (ngModelChange)="onChange($event)" type="number" class="example-right-align" placeholder="0" required />
+      <span matTextPrefix>$&nbsp;</span>
+      <span matTextSuffix>.00</span>
+      <mat-error *ngIf="getSourceAmount?.hasError('min')">
+        The minimum value is 1.
+      </mat-error>
+      <mat-error *ngIf="getSourceAmount?.hasError('required')">
+        Amount is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="sourceCurrencyCode">From</mat-label>
+      <mat-select id="sourceCurrencyCode" name="sourceCurrencyCode" formControlName="sourceCurrencyCode" type="number"
+        (ngModelChange)="onChange($event)" required>
+        <mat-option value="978">Euro</mat-option>
+        <mat-option value="826">Pound</mat-option>
+        <mat-option value="986">Real</mat-option>
+        <mat-option value="840">US Dollar</mat-option>
+      </mat-select>
+      <mat-error *ngIf="getSourceCurrencyCode?.hasError('required')">
+        Currency is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="destinationCurrencyCode">To</mat-label>
+      <mat-select id="destinationCurrencyCode" name="destinationCurrencyCode" formControlName="destinationCurrencyCode"
+        (ngModelChange)="onChange($event)" required>
+        <mat-option value="978">Euro</mat-option>
+        <mat-option value="826">Pound</mat-option>
+        <mat-option value="986">Real</mat-option>
+        <mat-option value="840">US Dollar</mat-option>
+      </mat-select>
+      <mat-error *ngIf="getDestinationCurrencyCode?.hasError('required')">
+        Currency is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button (ngModelChange)="onChange($event)" color="primary" type="submit" [disabled]="
+      exchangeRateForm.invalid ||
+      !exchangeRateForm.touched ||
+      !exchangeRateForm.dirty
+    ">
+    Convert Currency by Visa
+  </button>
+</form>
+
+<section style="margin-top: 5%;">
+  <mat-card *ngIf="showResults">
+    <mat-card-content><strong style="font-size: 12px;">Amount</strong></mat-card-content>
+    <mat-card-content>{{resultData?.destinationAmount}}</mat-card-content>
+  </mat-card>
+</section>
+<section style="margin-top: 1%;">
+  <mat-card *ngIf="showResults">
+    <mat-card-content><strong style="font-size: 12px;">Rate</strong></mat-card-content>
+    <mat-card-content>{{resultData?.conversionRate}}</mat-card-content>
+  </mat-card>
+</section>

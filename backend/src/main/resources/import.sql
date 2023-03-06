@@ -1,0 +1,2 @@
+CREATE TRIGGER rate_history_trigger_update BEFORE UPDATE ON RATE_HISTORY_LOG FOR EACH ROW CALL "com.joel.exchange.data.UpdateLogTrigger";
+CREATE TRIGGER rate_history_trigger_insert BEFORE INSERT ON RATE_HISTORY_LOG FOR EACH ROW CALL "com.joel.exchange.data.CreateLogTrigger";

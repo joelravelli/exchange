@@ -1,0 +1,15 @@
+<div #charts id="chart" *ngIf="graphReady">
+  <apx-chart
+    [series]='chartOptions?.series!'
+    [chart]="chartOptions?.chart!"
+    [dataLabels]="chartOptions?.dataLabels!"
+    [plotOptions]="chartOptions?.plotOptions!"
+    [yaxis]="chartOptions?.yAxis!"
+    [xaxis]="chartOptions?.xAxis!"
+    [fill]="chartOptions?.fill!"
+    [title]="chartOptions?.title!"
+    [theme]="chartOptions?.theme!"
+  ></apx-chart>
+</div>
+
+<div *ngIf="!graphReady"> <p>Carregando...</p> </div>

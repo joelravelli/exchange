@@ -39,7 +39,8 @@ De acordo com a figura, temos dois softwares criados para essa arquitetura e uma
 - Serviços RESTFul;
 - Aplicação com timezone UTC;
 - SQL e JPA;
-- Testes unitários planejados a desenvolver.
+- Testes unitários e de integração do serviço principal Visa (VisaService):
+![Testes](./docs/Tests-back.png)
 3) A **integração com a Visa** é plataforma que disponibiliza as APIs da Visa, que foi integrada ao **Backend**, para realizar operações de consultas de câmbio de moedas.
 
 
